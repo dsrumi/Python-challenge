@@ -36,23 +36,37 @@ with open(poll_csv, 'r') as csvfile:
     raymon_percentage = round(raymon_votes/total * 100 ,3)
 
     # write percentages and votes to file
-    f.writelines("Election Results\n")
-    f.writelines("------------------------\n")
-    f.writelines(f"Total votes: {total}\n")
-    f.writelines("------------------------\n")
-    f.writelines(f"Charles Casper Stockham: {charles_percentage}% ({charles_votes})\n")
-    f.writelines(f"Diana DeGette: {diana_percentage}% ({diana_votes})\n")
-    f.writelines(f"Raymon Anthony Doane: {raymon_percentage}% ({raymon_votes})\n")
+    print("Election Results") 
+    print("------------------------")
+    print(f"Total votes: {total}")
+    print("------------------------")
+    print(f"Charles Casper Stockham: {charles_percentage}% ({charles_votes})")
+    print(f"Diana DeGette: {diana_percentage}% ({diana_votes})")
+    print(f"Raymon Anthony Doane: {raymon_percentage}% ({raymon_votes})")
+    
+    output_string = "Election Results\n" + "------------------------\n" + f"Total votes: {total}\n" + "------------------------\n" + f"Charles Casper Stockham: {charles_percentage}% ({charles_votes})\n"
+    output_string += f"Diana DeGette: {diana_percentage}% ({diana_votes})\n" + f"Raymon Anthony Doane: {raymon_percentage}% ({raymon_votes})\n" 
 
+    
+
+    
     # finding and writing the winner to our file
     winner_votes = max(charles_votes,diana_votes,raymon_votes)
     if winner_votes == charles_votes:
-        f.writelines("Winner: Charles Casper Stockham\n ")
+        print("Winner: Charles Casper Stockham")
+        output_string += "Winner: Charles Casper Stockham\n"
     elif winner_votes == diana_votes:
-        f.writelines("Winner: Diana DeGette\n")
+        print("Winner: Diana DeGette")
+        output_string += "Winner: Diana DeGette\n"
     else:
-        f.writelines("Winner: Raymon Anthony Doane\n")
-    f.writelines("------------------------\n")
+        print("Winner: Raymon Anthony Doane")
+        output_string += "Winner: Raymon Anthony Doane\n"
+    print("------------------------")
+    
+    output_string += "------------------------\n"
+    f.writelines(output_string)
+       
+    
 
 
 f.close()
